@@ -30,6 +30,10 @@ jobs:
       - setup_remote_docker
       - checkout
       - docker/check
+      - docker/build:
+          image: dockerdocker196/node-app-for-devops:latest
+      - docker/push:
+          image: dockerdocker196/node-app-for-devops:latest
 
 workflows:
   simple_workflow:
@@ -38,3 +42,6 @@ workflows:
       - test:
           requires:
             - build
+      - publish:
+          requires:
+            - test
