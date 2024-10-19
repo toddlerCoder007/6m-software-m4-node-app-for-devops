@@ -4,5 +4,3 @@ function print(req, res) {
 }
 
 module.exports = print;
-
-// test
