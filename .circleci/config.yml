@@ -31,9 +31,9 @@ jobs:
       - checkout
       - docker/check
       - docker/build:
-          image: dockerdocker196/node-app-for-devops:latest
+          image: dockerdocker196/node-app-for-devops
       - docker/push:
-          image: dockerdocker196/node-app-for-devops:latest
+          image: dockerdocker196/node-app-for-devops
 
 workflows:
   simple_workflow:
