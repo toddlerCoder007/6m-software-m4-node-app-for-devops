@@ -29,10 +29,10 @@ jobs:
     steps:
       - setup_remote_docker
       - checkout
-      - docker/check
-      - docker/login:
-          username: $DOCKERHUB_USERNAME
-          password: $DOCKERHUB_PASSWORD
+      - run:
+        name: Docker Login
+        command: |
+          echo $DOCKERHUB_PASSWORD | docker login -u $DOCKERHUB_USERNAME --password-stdin
       - docker/check
       - docker/build:
           image: dockerdocker196/node-app-for-devops
