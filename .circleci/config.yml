@@ -30,6 +30,10 @@ jobs:
       - setup_remote_docker
       - checkout
       - docker/check
+      - docker/login:
+          username: $DOCKERHUB_USERNAME
+          password: $DOCKERHUB_PASSWORD
+      - docker/check
       - docker/build:
           image: dockerdocker196/node-app-for-devops
       - docker/push:
