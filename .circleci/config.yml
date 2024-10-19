@@ -29,6 +29,7 @@ jobs:
     steps:
       - setup_remote_docker
       - checkout
+      - docker/check
       - run:
         name: Docker Login
         command: |
