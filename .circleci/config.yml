@@ -30,18 +30,12 @@ jobs:
       - setup_remote_docker
       - checkout
       - docker/check
-      - run:
+      - run: echo $DOCKERHUB_PASSWORD | docker login -u $DOCKERHUB_USERNAME --password-stdin
         name: Docker Login
-        command: |
-          echo $DOCKERHUB_PASSWORD | docker login -u $DOCKERHUB_USERNAME --password-stdin
-      # Build the Docker image
-      - run:
+      - run: docker build -t dockerdocker196/node-app-for-devops .
         name: Build Docker Image
-        command: docker build -t dockerdocker196/node-app-for-devops .
-      # Push the Docker image
-      - run:
-        name: Push Docker Image
-        command: docker push dockerdocker196/node-app-for-devops
+      - run: docker push dockerdocker196/node-app-for-devops
+        name: Push Docker Images
 
 workflows:
   simple_workflow:
